@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=1024, user-scalable=no">
 
-	<title>Your deck.js Presentation</title>
+	<title>Rapid Prototyping</title>
 	
 	<!-- Required stylesheet -->
 	<link rel="stylesheet" href="core/deck.core.css">
@@ -35,8 +35,8 @@
 	<h1>Rapid prototyping with JS,PHP and MySQL</h1>
 </section>
 
-<section class="slide" id="basics-php">
-	<h2>Some basics</h2>
+<section class="slide" id="basics1-php">
+	<h2>Some basics - PHP</h2>
 	<ul>
 		<li>PHP - server side scripting</li>
 		<li>PHP is interpreted</li>
@@ -44,17 +44,16 @@
 	</ul>
 </section>
 
-<section class="slide" id="sowhat">
-	<h2>So what?</h2>
+<section class="slide" id="basics2-php">
+	<h2>Some more basics</h2>
 	<ul>
 		<li>Variable declarations</li>
-		<li></li>
-		<li>Apache's mod_php makes your life easier</li>
+		<li>Arrays are hashes</li>
 	</ul>
 	<code>
 			$integer = 10;
 			<br>
-			$string = "ten";
+			$string = "ten".10;//concat strings. returns ten10
 			<br>
 			$array = array("matrix","starwars","star trek");
 			<br>
@@ -62,8 +61,49 @@
 	</code>
 </section>
 
-<section class="slide" id="basics-js">
+<section class="slide" id="basics3-php">
 	<h2>So what?</h2>
+	<ul>
+		<li>Get up and running quickly</li>
+		<li>All essential libraries are included</li>
+		<li>Debug quickly</li>
+	</ul>
+	<code>
+			json_encode($array); //Returns json string of array
+			<br>
+			header("Content-type:application/json"); //sets response header
+			<br>
+			file_put_contents("pizza.txt","Dominoes is awesome"); //writes to file
+			<br>
+			print_r($array);//prints array contents
+			<br>
+	</code>
+</section>
+<section class="slide" id="basics1-mysql">
+	<h2>Some basics - MySQL</h2>
+	<ul>
+		<li>RDBMS</li>
+		<li>PHPMyAdmin saves you eons</li>
+		<li>Facebook runs on this</li>
+	</ul>
+</section>
+<section class="slide" id="basics2-mysql">
+	<h2>Get Connected</h2>
+	<pre>
+		<code>
+$con=mysqli_connect("myhack-db","username","password");
+// Check connection
+if (mysqli_connect_errno())
+  echo "Failed to connect to MySQL: " . mysqli_connect_error();
+
+// Create database
+$sql="CREATE DATABASE my_db";
+if (mysqli_query($con,$sql))
+  echo "Database my_db created successfully";
+else
+  echo "Error creating database: " . mysqli_error();
+		</code>
+	</pre>
 </section>
 <!-- End slides. -->
 
