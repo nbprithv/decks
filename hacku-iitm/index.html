@@ -73,7 +73,7 @@
 			<br>
 			header("Content-type:application/json"); //sets response header
 			<br>
-			file_put_contents("pizza.txt","Dominoes is awesome"); //writes to file
+			file_put_contents("pizza.txt","Dominoes is awesome"); //file write
 			<br>
 			print_r($array);//prints array contents
 			<br>
@@ -83,6 +83,7 @@
 	<h2>Some basics - MySQL</h2>
 	<ul>
 		<li>RDBMS</li>
+		<li>Awesome for prototyping</li>
 		<li>PHPMyAdmin saves you eons</li>
 		<li>Facebook runs on this</li>
 	</ul>
@@ -104,6 +105,35 @@ else
   echo "Error creating database: " . mysqli_error();
 		</code>
 	</pre>
+</section>
+<section class="slide" id="basics3-mysql">
+	<h2>Queries - Run some</h2>
+<pre>
+	<code>
+if ($result = $mysqli->query("SELECT Name FROM Pizzas LIMIT 10")) {
+    printf("Select returned %d rows.\n", $result->num_rows);
+/* numeric array */
+$row = $result->fetch_array(MYSQLI_NUM);
+printf ("%s (%s)\n", $row[0], $row[1]);
+
+/* associative array */
+$row = $result->fetch_array(MYSQLI_ASSOC);
+printf ("%s (%s)\n", $row["Name"], $row["CountryCode"]);
+
+    /* free result set */
+    $result->close();
+}
+	</code>
+</pre>
+</section>
+<section class="slide" id="getstarted">
+	<h2>So how do I get started?</h2>
+	<ul>
+		<li>Install Apache PHP MySQL stack</li>
+		<li>Ubuntu: https://help.ubuntu.com/community/ApacheMySQLPHP</li>
+		<li>OS X - MAMP: http://www.mamp.info/en/index.html</li>
+		<li>Windows - XAMPP: www.apachefriends.org/en/xampp.html</li>
+	</ul>
 </section>
 <!-- End slides. -->
 
