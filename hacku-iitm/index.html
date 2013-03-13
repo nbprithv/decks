@@ -126,6 +126,57 @@ printf ("%s (%s)\n", $row["Name"], $row["CountryCode"]);
 	</code>
 </pre>
 </section>
+<section class="slide" id="basics1-js">
+	<h2>Javascript</h2>
+	<ul>
+		<li>Everything is an Object</li>
+		<li>jQuery & YUI3 are abstractions</li>
+	</ul>
+<pre>
+	<code>
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.open("GET","note.xml",false);
+xmlhttp.send();
+xmlDoc=xmlhttp.responseXML;
+
+document.getElementById("to").innerHTML=
+xmlDoc.getElementsByTagName("to")[0].childNodes[0].nodeValue;
+document.getElementById("from").innerHTML=
+xmlDoc.getElementsByTagName("from")[0].childNodes[0].nodeValue;
+document.getElementById("message").innerHTML=
+xmlDoc.getElementsByTagName("body")[0].childNodes[0].nodeValue;
+
+	</code>
+</pre>
+</section>
+<section class="slide" id="basics2-js">
+	<h2>jQuery, YUI3 - What are they?</h2>
+	<ul>
+		<li>Frameworks/Libraries</li>
+		<li>Easy to use wrappers</li>
+	</ul>
+<pre>
+<code>
+YUI().use("io-base", function(Y) {
+    var uri = "get.php?foo=bar";
+
+    // Define a function to handle the response data.
+    function complete(id, o, args) {
+        var data = o.responseText; // Response data.
+    };
+	Y.on('io:complete', complete, Y, ['lorem', 'ipsum']);
+	var request = Y.io(uri);
+});
+</code>
+</pre>
+</section>
 <section class="slide" id="getstarted">
 	<h2>So how do I get started?</h2>
 	<ul>
