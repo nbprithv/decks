@@ -122,9 +122,26 @@ print_r($rows);
 <section class="slide" id="basics1-js">
 	<h2>Javascript</h2>
 	<ul>
-		<li>Everything is an Object</li>
-		<li>jQuery & YUI3 are abstractions</li>
+		<li>Language for the browser?</li>
+		<li>Event driven VS sequential</li>
+<code>
+<pre>
+$(document).ready(function(){
+$.ajax({
+	url:"getUserStats.php?userid=3",
+	callback:function(data){
+		console.log(data);
+	}
+}); //this takes 10 seconds to respond
+document.getElementById("content").innerHTML = "Got your data";
+});
+		
+</pre>
+</code>
 	</ul>
+</section>
+<section class="slide" id="basics2-js">
+	<h2>Javascript VS jQuery/YUI3/mootools/Prototype</h2>
 <pre>
 	<code>
 if (window.XMLHttpRequest)
@@ -149,7 +166,7 @@ xmlDoc.getElementsByTagName("body")[0].childNodes[0].nodeValue;
 	</code>
 </pre>
 </section>
-<section class="slide" id="basics2-js">
+<section class="slide" id="basics3-js">
 	<h2>jQuery, YUI3 - What are they?</h2>
 	<ul>
 		<li>Frameworks/Libraries</li>
