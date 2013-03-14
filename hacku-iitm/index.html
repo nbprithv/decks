@@ -69,21 +69,24 @@
 		<li>Debug quickly</li>
 	</ul>
 	<code>
-			json_encode($array); //Returns json string of array
+			json_encode($array); //JSON operations
 			<br>
-			header("Content-type:application/json"); //sets response header
+			header("Content-type:application/json"); //HTTP headers
 			<br>
-			file_put_contents("pizza.txt","Dominoes is awesome"); //file write
+			file_put_contents("pizza.txt","Dominoes is awesome"); //file operations
 			<br>
-			print_r($array);//prints array contents
+			print_r($array);//dump datastructures
 			<br>
+			`curl http://yahoo.com/` //execute command line tools
+			<br>
+			~$ php myscript.php //execute php from command line
 	</code>
 </section>
 <section class="slide" id="basics1-mysql">
 	<h2>Some basics - MySQL</h2>
 	<ul>
 		<li>RDBMS</li>
-		<li>Awesome for prototyping</li>
+		<li>Awesome for prototyping and production</li>
 		<li>PHPMyAdmin saves you eons</li>
 		<li>Facebook runs on this</li>
 	</ul>
@@ -92,17 +95,11 @@
 	<h2>Get Connected</h2>
 	<pre>
 		<code>
-$con=mysqli_connect("myhack-db","username","password");
+$con=mysql_connect("myhack-db","username","password");
 // Check connection
-if (mysqli_connect_errno())
-  echo "Failed to connect to MySQL: " . mysqli_connect_error();
-
-// Create database
-$sql="CREATE DATABASE my_db";
-if (mysqli_query($con,$sql))
-  echo "Database my_db created successfully";
-else
-  echo "Error creating database: " . mysqli_error();
+if (!$con) {
+	die('Could not connect: ' . mysql_error());
+}
 		</code>
 	</pre>
 </section>
@@ -110,19 +107,15 @@ else
 	<h2>Queries - Run some</h2>
 <pre>
 	<code>
-if ($result = $mysqli->query("SELECT Name FROM Pizzas LIMIT 10")) {
-    printf("Select returned %d rows.\n", $result->num_rows);
-/* numeric array */
-$row = $result->fetch_array(MYSQLI_NUM);
-printf ("%s (%s)\n", $row[0], $row[1]);
-
-/* associative array */
-$row = $result->fetch_array(MYSQLI_ASSOC);
-printf ("%s (%s)\n", $row["Name"], $row["CountryCode"]);
-
-    /* free result set */
-    $result->close();
+$con=mysql_connect("localhost","root","root");
+mysql_select_db('test', $con);
+$sql = "select * from pizzas;";
+$result = mysql_query($sql,$con);
+$rows = array();
+while($r = mysql_fetch_assoc($result)) {
+    $rows[] = $r;
 }
+print_r($rows);
 	</code>
 </pre>
 </section>
